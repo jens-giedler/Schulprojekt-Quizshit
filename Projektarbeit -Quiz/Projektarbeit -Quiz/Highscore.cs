@@ -17,11 +17,22 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        public static Form highscore_1 = new Form();
+
         private void highscoreZurueck_Click(object sender, EventArgs e)
         {
-            Menü hm = new Menü();
-            hm.Show();
-            this.Close();
+            Form1.menue_01.Show();
+            this.Hide();
+        }
+
+        private void Highscore_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Highscore_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

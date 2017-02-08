@@ -21,16 +21,19 @@ namespace Projektarbeit__Quiz
 
         private void startStart_Click(object sender, EventArgs e)
         {
-            Menü hm = new Menü();
-            hm.Show();
-            this.Close();
+            Form1.menue_01.Show();
+            this.Hide();
         }
 
         private void startNeuerBenutzer_Click(object sender, EventArgs e)
         {
-            NeuerBenutzer nb = new NeuerBenutzer();
-            nb.Show();
-            this.Close();
+            Form1.neuerbenutzer_01.Show();
+            this.Hide();
+        }
+
+        private void Start_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

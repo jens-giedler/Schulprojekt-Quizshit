@@ -19,9 +19,13 @@ namespace Projektarbeit__Quiz
 
         private void neuerBenutzerZurueck_Click(object sender, EventArgs e)
         {
-            Start sf = new Start();
-            sf.Show();
-            this.Close();
+            Form1.start_01.Show();
+            this.Hide();
+        }
+
+        private void NeuerBenutzer_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

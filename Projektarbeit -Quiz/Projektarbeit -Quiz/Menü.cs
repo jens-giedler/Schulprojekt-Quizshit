@@ -17,11 +17,8 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
-        public void menueBeenden_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
+        public static Form menue_1 = new Form();
+        
         private void Menü_Load(object sender, EventArgs e)
         {
 
@@ -47,12 +44,18 @@ namespace Projektarbeit__Quiz
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 farbFeld.BackColor = colorDialog1.Color;
+                //set benutzer.color = colorDialog1.Color;
             }
         }
 
         private void label1_Click_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void Menü_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

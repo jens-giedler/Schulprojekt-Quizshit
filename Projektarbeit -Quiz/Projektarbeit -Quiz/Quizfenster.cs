@@ -22,5 +22,10 @@ namespace Projektarbeit__Quiz
 
         }
 
+        private void Quizfenster_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
+
     }
 }
