@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menueBeenden = new System.Windows.Forms.Button();
             this.kategorieCheckList = new System.Windows.Forms.CheckedListBox();
             this.kategorien = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -40,16 +39,6 @@
             this.musik = new System.Windows.Forms.Label();
             this.farbFeld = new System.Windows.Forms.Label();
             this.SuspendLayout();
-            // 
-            // menueBeenden
-            // 
-            this.menueBeenden.Location = new System.Drawing.Point(636, 12);
-            this.menueBeenden.Name = "menueBeenden";
-            this.menueBeenden.Size = new System.Drawing.Size(75, 23);
-            this.menueBeenden.TabIndex = 0;
-            this.menueBeenden.Text = "Beenden";
-            this.menueBeenden.UseVisualStyleBackColor = true;
-            this.menueBeenden.Click += new System.EventHandler(this.menueBeenden_Click);
             // 
             // kategorieCheckList
             // 
@@ -133,7 +122,7 @@
             this.ton.TabIndex = 8;
             this.ton.Text = "Ton";
             this.ton.UseVisualStyleBackColor = true;
-            this.ton.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ton.CheckedChanged += new System.EventHandler(this.ton_CheckedChanged);
             // 
             // colorDialog
             // 
@@ -178,9 +167,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.kategorien);
             this.Controls.Add(this.kategorieCheckList);
-            this.Controls.Add(this.menueBeenden);
             this.Name = "Menü";
             this.Text = "Supertollesquiz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menü_FormClosing);
             this.Load += new System.EventHandler(this.Menü_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,7 +178,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button menueBeenden;
         private System.Windows.Forms.CheckedListBox kategorieCheckList;
         private System.Windows.Forms.Label kategorien;
         private System.Windows.Forms.TextBox textBox1;
