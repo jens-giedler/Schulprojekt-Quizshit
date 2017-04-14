@@ -111,6 +111,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "NeuerBenutzer";
             this.Text = "Supertollesquiz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NeuerBenutzer_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 

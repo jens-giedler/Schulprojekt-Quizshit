@@ -38,6 +38,7 @@
             this.colorDialog = new System.Windows.Forms.Button();
             this.musik = new System.Windows.Forms.Label();
             this.farbFeld = new System.Windows.Forms.Label();
+            this.menueQuizStart = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // kategorieCheckList
@@ -153,11 +154,22 @@
             this.farbFeld.Text = "   ";
             this.farbFeld.Click += new System.EventHandler(this.label1_Click_1);
             // 
+            // menueQuizStart
+            // 
+            this.menueQuizStart.Location = new System.Drawing.Point(600, 363);
+            this.menueQuizStart.Name = "menueQuizStart";
+            this.menueQuizStart.Size = new System.Drawing.Size(75, 23);
+            this.menueQuizStart.TabIndex = 12;
+            this.menueQuizStart.Text = "Start";
+            this.menueQuizStart.UseVisualStyleBackColor = true;
+            this.menueQuizStart.Click += new System.EventHandler(this.menueQuizStart_Click);
+            // 
             // Menü
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 398);
+            this.Controls.Add(this.menueQuizStart);
             this.Controls.Add(this.farbFeld);
             this.Controls.Add(this.musik);
             this.Controls.Add(this.colorDialog);
@@ -188,5 +200,6 @@
         private System.Windows.Forms.Button colorDialog;
         private System.Windows.Forms.Label musik;
         private System.Windows.Forms.Label farbFeld;
+        private System.Windows.Forms.Button menueQuizStart;
     }
 }

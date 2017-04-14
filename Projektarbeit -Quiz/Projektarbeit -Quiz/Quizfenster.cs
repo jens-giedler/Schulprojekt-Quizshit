@@ -27,5 +27,10 @@ namespace Projektarbeit__Quiz
             Application.Exit();
         }
 
+        private void naechsteFrage_Click(object sender, EventArgs e)
+        {
+            //Form1.quizfenster_01.frageText.Text = Form1.
+        }
+
     }
 }

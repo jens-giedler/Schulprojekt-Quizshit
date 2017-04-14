@@ -71,6 +71,7 @@
             this.Controls.Add(this.startStart);
             this.Name = "Start";
             this.Text = "Supertollesquiz";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Start_FormClosing);
             this.ResumeLayout(false);
 
         }

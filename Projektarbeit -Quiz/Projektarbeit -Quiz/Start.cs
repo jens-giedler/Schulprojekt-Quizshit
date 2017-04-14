@@ -23,12 +23,14 @@ namespace Projektarbeit__Quiz
         {
             Form1.menue_01.Show();
             this.Hide();
+            //Form1.menue_01.kategorieCheckList.Items =
         }
 
         private void startNeuerBenutzer_Click(object sender, EventArgs e)
         {
             Form1.neuerbenutzer_01.Show();
             this.Hide();
+           
         }
 
         private void Start_FormClosing(object sender, FormClosingEventArgs e)

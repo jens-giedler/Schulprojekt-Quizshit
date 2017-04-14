@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data;
+using MySql.Data.MySqlClient;
 
 namespace Projektarbeit__Quiz
 {
     public partial class Form1 : Form
     {
+
+        MySqlDataAdapter da = null;
+        DataSet ds = null;
         public Form1()
         {
             InitializeComponent();
@@ -25,20 +30,64 @@ namespace Projektarbeit__Quiz
 
         public static Benutzer Max = new Benutzer();
 
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             start_01.Show();
-            this.Hide();
+            //this.Hide();
             menue_01.Hide();
             highscore_01.Hide();
             neuerbenutzer_01.Hide();
             quizfenster_01.Hide();
             timer1.Enabled = false;
+            ConnectDatabase();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void ConnectDatabase()
+        {
+            MySqlConnection conn = null;
+            try
+            {
+                string connStr = "server=127.0.0.1;user=root;database=quiz;";
+                conn = new MySqlConnection(connStr);
+                conn.Open();
+                label_Connection.BackColor = Color.LightGreen;
+                label_Connection.Text = "MySql-Server verbunden";
+                string sql = "SELECT * FROM kategorie";
+                MySqlCommand cmd = new MySqlCommand(sql, conn);
+                da = new MySqlDataAdapter(cmd);
+                ds = new DataSet();
+                da.Fill(ds, "tErgebnismenge");
+                dataGridView1.DataSource = ds.Tables["tErgebnismenge"];
+                MySqlCommandBuilder cb = new MySqlCommandBuilder(da);
+                da.UpdateCommand = cb.GetUpdateCommand();
+                da.DeleteCommand = cb.GetDeleteCommand();
+                da.InsertCommand = cb.GetInsertCommand();
+                cb.ConflictOption = ConflictOption.CompareAllSearchableValues;
+            }
+            catch (Exception e)
+            {
+            label_Connection.BackColor = Color.Red;
+            label_Connection.Text = "Verbindung mit MySql-Server fehlgeschlagen";
+            MessageBox.Show(e.Message);
+            }
+            finally
+            {
+                if (conn != null) conn.Close();
+            }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
         }
 
     }
@@ -88,4 +137,5 @@ namespace Projektarbeit__Quiz
     public class Kategorie { 
     }
 
-}
+
+

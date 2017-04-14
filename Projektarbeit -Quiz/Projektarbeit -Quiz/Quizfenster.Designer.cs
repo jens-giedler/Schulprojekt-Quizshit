@@ -73,6 +73,7 @@
             this.naechsteFrage.TabIndex = 7;
             this.naechsteFrage.Text = "naechste";
             this.naechsteFrage.UseVisualStyleBackColor = true;
+            this.naechsteFrage.Click += new System.EventHandler(this.naechsteFrage_Click);
             // 
             // antwort1
             // 
@@ -133,6 +134,7 @@
             this.Controls.Add(this.fragenNummer);
             this.Name = "Quizfenster";
             this.Text = "Quizfenster";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Quizfenster_FormClosing);
             this.Load += new System.EventHandler(this.Quizfenster_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

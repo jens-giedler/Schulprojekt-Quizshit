@@ -34,9 +34,16 @@ namespace Projektarbeit__Quiz
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void ton_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (ton.Checked == true)
+            {
+                Form1.Max.setTon(true);
+            }
+            else if (ton.Checked == false)
+            {
+                Form1.Max.setTon(false);
+            }
         }
 
         private void colorDialog_Click(object sender, EventArgs e)
@@ -44,7 +51,7 @@ namespace Projektarbeit__Quiz
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 farbFeld.BackColor = colorDialog1.Color;
-                //set benutzer.color = colorDialog1.Color;
+                //Form1.Max.setFarbe(colorDialog1.Color);
             }
         }
 
@@ -56,6 +63,13 @@ namespace Projektarbeit__Quiz
         private void Menü_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void menueQuizStart_Click(object sender, EventArgs e)
+        {
+
+            Form1.quizfenster_01.Show();
+            this.Hide();
         }
     }
 }
