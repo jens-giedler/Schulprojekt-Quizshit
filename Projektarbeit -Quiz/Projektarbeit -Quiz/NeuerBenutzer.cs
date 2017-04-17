@@ -35,8 +35,11 @@ namespace Projektarbeit__Quiz
         {
             if (Form1.neuerbenutzer_01.textBoxName.Text == Form1.neuerbenutzer_01.nameEingeben.Text)
             {
-                Benutzer test = new Benutzer();
-                test.setName(Form1.neuerbenutzer_01.textBoxName.Text);
+                Benutzer test = new Benutzer(1, Form1.neuerbenutzer_01.textBoxName.Text);
+                DataGridViewRow row = (DataGridViewRow)Form1.databaseconnect_01.dataGridViewBenutzer.Rows[0].Clone();
+                row.Cells[0].Value = test.getBeId();
+                row.Cells[1].Value = test.getName();
+                Form1.databaseconnect_01.dataGridViewBenutzer.Rows.Add(row);
             }
             else
             {

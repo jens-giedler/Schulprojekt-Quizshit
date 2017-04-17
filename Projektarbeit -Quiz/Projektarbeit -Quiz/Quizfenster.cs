@@ -43,8 +43,9 @@ namespace Projektarbeit__Quiz
 
         public void ladeNaechsteFrage()
         {
-            //Form1.quizfenster_01.frageText = ;
-            //Form1.quizfenster_01.fragenNummer =;
+            
+            //Form1.quizfenster_01.frageText = Form1.dataGridViewFragen;
+            //Form1.quizfenster_01.fragenNummer = Form1.frageCounter;
             //Form1.quizfenster_01.antwort1 =;
             //Form1.quizfenster_01.antwort2 =;
             //Form1.quizfenster_01.antwort3 =;

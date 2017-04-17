@@ -36,14 +36,7 @@ namespace Projektarbeit__Quiz
 
         private void ton_CheckedChanged(object sender, EventArgs e)
         {
-            if (ton.Checked == true)
-            {
-                Form1.Max.setTon(true);
-            }
-            else if (ton.Checked == false)
-            {
-                Form1.Max.setTon(false);
-            }
+
         }
 
         private void colorDialog_Click(object sender, EventArgs e)

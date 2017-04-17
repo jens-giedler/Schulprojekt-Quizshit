@@ -36,3 +36,4 @@ C:\Users\Jens\Documents\GitHub\Schulprojekt-Quizshit\Projektarbeit -Quiz\Projekt
 C:\Users\Jens\Documents\GitHub\Schulprojekt-Quizshit\Projektarbeit -Quiz\Projektarbeit -Quiz\obj\Debug\Projektarbeit__Quiz.Start.resources
 C:\Users\Jens\Documents\GitHub\Schulprojekt-Quizshit\Projektarbeit -Quiz\Projektarbeit -Quiz\obj\Debug\Projektarbeit__Quiz.Properties.Resources.resources
 C:\Users\Jens\Documents\GitHub\Schulprojekt-Quizshit\Projektarbeit -Quiz\Projektarbeit -Quiz\obj\Debug\Projektarbeit -Quiz.csproj.GenerateResource.Cache
+C:\Users\Jens\Documents\GitHub\Schulprojekt-Quizshit\Projektarbeit -Quiz\Projektarbeit -Quiz\obj\Debug\Projektarbeit__Quiz.DatabaseConnect.resources
