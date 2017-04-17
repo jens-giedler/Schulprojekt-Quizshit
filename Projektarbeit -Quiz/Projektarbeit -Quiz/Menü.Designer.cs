@@ -45,34 +45,6 @@
             // 
             this.kategorieCheckList.ForeColor = System.Drawing.SystemColors.WindowText;
             this.kategorieCheckList.FormattingEnabled = true;
-            this.kategorieCheckList.Items.AddRange(new object[] {
-            "Wasser",
-            "Erde",
-            "Luft",
-            "Feuer",
-            "Doch",
-            "alles ",
-            "änderte ",
-            "sich",
-            "als ",
-            "die ",
-            "Feuernation ",
-            "angriff",
-            "stuff",
-            "shit",
-            "quiz",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "0",
-            "",
-            "shit"});
             this.kategorieCheckList.Location = new System.Drawing.Point(0, 61);
             this.kategorieCheckList.Name = "kategorieCheckList";
             this.kategorieCheckList.Size = new System.Drawing.Size(352, 274);

@@ -35,7 +35,6 @@
             this.antwort1 = new System.Windows.Forms.RadioButton();
             this.antwort2 = new System.Windows.Forms.RadioButton();
             this.antwort3 = new System.Windows.Forms.RadioButton();
-            this.antwort4 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // fragenNummer
@@ -108,23 +107,11 @@
             this.antwort3.Text = "antwort3";
             this.antwort3.UseVisualStyleBackColor = true;
             // 
-            // antwort4
-            // 
-            this.antwort4.AutoSize = true;
-            this.antwort4.Location = new System.Drawing.Point(156, 269);
-            this.antwort4.Name = "antwort4";
-            this.antwort4.Size = new System.Drawing.Size(66, 17);
-            this.antwort4.TabIndex = 11;
-            this.antwort4.TabStop = true;
-            this.antwort4.Text = "antwort4";
-            this.antwort4.UseVisualStyleBackColor = true;
-            // 
             // Quizfenster
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(648, 394);
-            this.Controls.Add(this.antwort4);
             this.Controls.Add(this.antwort3);
             this.Controls.Add(this.antwort2);
             this.Controls.Add(this.antwort1);
@@ -150,6 +137,5 @@
         private System.Windows.Forms.RadioButton antwort1;
         private System.Windows.Forms.RadioButton antwort2;
         private System.Windows.Forms.RadioButton antwort3;
-        private System.Windows.Forms.RadioButton antwort4;
     }
 }

@@ -28,28 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxNameRepeat = new System.Windows.Forms.TextBox();
             this.neuerName = new System.Windows.Forms.Label();
             this.nameEingeben = new System.Windows.Forms.Label();
             this.nameWiederholen = new System.Windows.Forms.Label();
             this.neuerBenutzerFertig = new System.Windows.Forms.Button();
             this.neuerBenutzerZurueck = new System.Windows.Forms.Button();
+            this.neuerBenutzerUngleich = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // textBox1
+            // textBoxName
             // 
-            this.textBox1.Location = new System.Drawing.Point(202, 134);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.textBoxName.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.textBoxName.Location = new System.Drawing.Point(202, 134);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(100, 20);
+            this.textBoxName.TabIndex = 0;
             // 
-            // textBox2
+            // textBoxNameRepeat
             // 
-            this.textBox2.Location = new System.Drawing.Point(202, 174);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.textBoxNameRepeat.Location = new System.Drawing.Point(202, 174);
+            this.textBoxNameRepeat.Name = "textBoxNameRepeat";
+            this.textBoxNameRepeat.Size = new System.Drawing.Size(100, 20);
+            this.textBoxNameRepeat.TabIndex = 1;
             // 
             // neuerName
             // 
@@ -86,6 +88,7 @@
             this.neuerBenutzerFertig.TabIndex = 5;
             this.neuerBenutzerFertig.Text = "Erstellen";
             this.neuerBenutzerFertig.UseVisualStyleBackColor = true;
+            this.neuerBenutzerFertig.Click += new System.EventHandler(this.neuerBenutzerFertig_Click);
             // 
             // neuerBenutzerZurueck
             // 
@@ -97,18 +100,30 @@
             this.neuerBenutzerZurueck.UseVisualStyleBackColor = true;
             this.neuerBenutzerZurueck.Click += new System.EventHandler(this.neuerBenutzerZurueck_Click);
             // 
+            // neuerBenutzerUngleich
+            // 
+            this.neuerBenutzerUngleich.AutoSize = true;
+            this.neuerBenutzerUngleich.BackColor = System.Drawing.Color.Red;
+            this.neuerBenutzerUngleich.Location = new System.Drawing.Point(202, 201);
+            this.neuerBenutzerUngleich.Name = "neuerBenutzerUngleich";
+            this.neuerBenutzerUngleich.Size = new System.Drawing.Size(137, 13);
+            this.neuerBenutzerUngleich.TabIndex = 7;
+            this.neuerBenutzerUngleich.Text = "Namen sind unterschiedlich";
+            this.neuerBenutzerUngleich.Visible = false;
+            // 
             // NeuerBenutzer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(537, 414);
+            this.Controls.Add(this.neuerBenutzerUngleich);
             this.Controls.Add(this.neuerBenutzerZurueck);
             this.Controls.Add(this.neuerBenutzerFertig);
             this.Controls.Add(this.nameWiederholen);
             this.Controls.Add(this.nameEingeben);
             this.Controls.Add(this.neuerName);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxNameRepeat);
+            this.Controls.Add(this.textBoxName);
             this.Name = "NeuerBenutzer";
             this.Text = "Supertollesquiz";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NeuerBenutzer_FormClosing);
@@ -119,12 +134,13 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxName;
+        private System.Windows.Forms.TextBox textBoxNameRepeat;
         private System.Windows.Forms.Label neuerName;
         private System.Windows.Forms.Label nameEingeben;
         private System.Windows.Forms.Label nameWiederholen;
         private System.Windows.Forms.Button neuerBenutzerFertig;
         private System.Windows.Forms.Button neuerBenutzerZurueck;
+        private System.Windows.Forms.Label neuerBenutzerUngleich;
     }
 }

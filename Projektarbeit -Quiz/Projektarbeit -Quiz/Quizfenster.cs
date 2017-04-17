@@ -29,7 +29,25 @@ namespace Projektarbeit__Quiz
 
         private void naechsteFrage_Click(object sender, EventArgs e)
         {
-            //Form1.quizfenster_01.frageText.Text = Form1.
+            Form1.frageCounter = Form1.frageCounter + 1;
+            if (Form1.frageCounter == 11)
+            {
+                Form1.menue_01.Show();
+                this.Hide();
+            }
+            else
+            {
+                //ladeNaechsteFrage();
+            }
+        }
+
+        public void ladeNaechsteFrage()
+        {
+            //Form1.quizfenster_01.frageText = ;
+            //Form1.quizfenster_01.fragenNummer =;
+            //Form1.quizfenster_01.antwort1 =;
+            //Form1.quizfenster_01.antwort2 =;
+            //Form1.quizfenster_01.antwort3 =;
         }
 
     }

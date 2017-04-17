@@ -67,7 +67,7 @@ namespace Projektarbeit__Quiz
 
         private void menueQuizStart_Click(object sender, EventArgs e)
         {
-
+            Form1.frageCounter = 1;
             Form1.quizfenster_01.Show();
             this.Hide();
         }
