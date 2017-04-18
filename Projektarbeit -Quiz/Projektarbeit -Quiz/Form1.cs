@@ -33,7 +33,7 @@ namespace Projektarbeit__Quiz
         private void timer1_Tick(object sender, EventArgs e)
         {
             start_01.Show();
-            //this.Hide();
+            this.Hide();
             menue_01.Hide();
             highscore_01.Hide();
             neuerbenutzer_01.Hide();

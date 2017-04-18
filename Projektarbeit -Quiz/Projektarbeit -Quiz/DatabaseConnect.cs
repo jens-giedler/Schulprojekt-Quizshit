@@ -38,6 +38,7 @@ namespace Projektarbeit__Quiz
         private void DatabaseConnect_Load(object sender, EventArgs e)
         {
             ConnectDatabase();
+            Form1.databaseconnect_01.Show();
         }
 
         private void DatabaseConnect_FormClosing(object sender, FormClosingEventArgs e)
