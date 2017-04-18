@@ -35,10 +35,10 @@ namespace Projektarbeit__Quiz
         MySqlDataAdapter da5 = null;
         DataSet ds5 = null;
 
+
         private void DatabaseConnect_Load(object sender, EventArgs e)
         {
             ConnectDatabase();
-            Form1.databaseconnect_01.Show();
         }
 
         private void DatabaseConnect_FormClosing(object sender, FormClosingEventArgs e)
@@ -127,6 +127,22 @@ namespace Projektarbeit__Quiz
             {
                 if (conn != null) conn.Close();
             }
+
+        }
+
+        public String[] getKategorienAusTabelle()
+        {
+            String[] array = new String[this.dataGridViewKategorie.Rows.Count];
+
+            foreach (DataGridViewRow row in dataGridViewKategorie.Rows)
+            {
+                for (int i = 0; i < dataGridViewKategorie.ColumnCount; i++)
+                {
+                    array.SetValue(row.Cells[i].Value.ToString, i);
+                }
+            }
+
+            return array;
         }
 
     }

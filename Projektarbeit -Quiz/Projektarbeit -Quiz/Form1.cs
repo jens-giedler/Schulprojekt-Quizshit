@@ -38,12 +38,18 @@ namespace Projektarbeit__Quiz
             highscore_01.Hide();
             neuerbenutzer_01.Hide();
             quizfenster_01.Hide();
+            databaseconnect_01.Show();
             timer1.Enabled = false;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        public void showthis()
+        {
+            this.Show();
         }
     }
 

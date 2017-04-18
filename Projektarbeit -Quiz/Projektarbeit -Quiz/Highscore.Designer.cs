@@ -114,6 +114,7 @@
             this.Controls.Add(this.highscore1);
             this.Controls.Add(this.highscoreOben);
             this.Name = "Highscore";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supertollesquiz";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Highscore_FormClosing);
             this.Load += new System.EventHandler(this.Highscore_Load);

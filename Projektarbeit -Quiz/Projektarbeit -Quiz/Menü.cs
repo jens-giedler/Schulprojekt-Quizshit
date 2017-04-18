@@ -24,6 +24,15 @@ namespace Projektarbeit__Quiz
 
         }
 
+        public void checkedListBoxFill()
+        {
+            String[] a = Form1.databaseconnect_01.getKategorienAusTabelle();
+            for (int i = 0; i < a.GetLength(1); i++)
+            {
+                this.kategorieCheckList.Items.Add(a.GetValue(i));
+            }
+        }
+
         private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -44,7 +53,8 @@ namespace Projektarbeit__Quiz
             if (colorDialog1.ShowDialog() == DialogResult.OK)
             {
                 farbFeld.BackColor = colorDialog1.Color;
-                //Form1.Max.setFarbe(colorDialog1.Color);
+                //this.BackColor = colorDialog1.Color;
+                Form1.quizfenster_01.BackColor = colorDialog1.Color;
             }
         }
 

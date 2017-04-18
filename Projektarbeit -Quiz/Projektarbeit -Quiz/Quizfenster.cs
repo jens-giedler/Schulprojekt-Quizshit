@@ -30,7 +30,7 @@ namespace Projektarbeit__Quiz
         private void naechsteFrage_Click(object sender, EventArgs e)
         {
             Form1.frageCounter = Form1.frageCounter + 1;
-            if (Form1.frageCounter == 11)
+            if (Form1.frageCounter == Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count)
             {
                 Form1.menue_01.Show();
                 this.Hide();
@@ -44,11 +44,11 @@ namespace Projektarbeit__Quiz
         public void ladeNaechsteFrage()
         {
             
-            //Form1.quizfenster_01.frageText = Form1.dataGridViewFragen;
+            //Form1.quizfenster_01.frageText = Form1.databaseconnect_01.dataGridViewFragensatz.Row;
             //Form1.quizfenster_01.fragenNummer = Form1.frageCounter;
-            //Form1.quizfenster_01.antwort1 =;
-            //Form1.quizfenster_01.antwort2 =;
-            //Form1.quizfenster_01.antwort3 =;
+            //Form1.quizfenster_01.antwort1 = Form1.databaseconnect_01.dataGridViewFragensatz.;
+            //Form1.quizfenster_01.antwort2 = Form1.databaseconnect_01.dataGridViewFragensatz.;
+            //Form1.quizfenster_01.antwort3 = Form1.databaseconnect_01.dataGridViewFragensatz.;
         }
 
     }

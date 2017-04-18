@@ -125,6 +125,7 @@
             this.Controls.Add(this.textBoxNameRepeat);
             this.Controls.Add(this.textBoxName);
             this.Name = "NeuerBenutzer";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supertollesquiz";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NeuerBenutzer_FormClosing);
             this.ResumeLayout(false);

@@ -152,6 +152,7 @@
             this.Controls.Add(this.kategorien);
             this.Controls.Add(this.kategorieCheckList);
             this.Name = "Menü";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Supertollesquiz";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Menü_FormClosing);
             this.Load += new System.EventHandler(this.Menü_Load);

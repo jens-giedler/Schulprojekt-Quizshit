@@ -36,12 +36,15 @@
             this.dataGridViewErgebnis = new System.Windows.Forms.DataGridView();
             this.dataGridViewFragen = new System.Windows.Forms.DataGridView();
             this.dataGridViewFrageninkategorie = new System.Windows.Forms.DataGridView();
+            this.dataGridViewFragensatz = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKategorie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBenutzer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewErgebnis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFrageninkategorie)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragensatz)).BeginInit();
             this.SuspendLayout();
+            // 
             // label_Connection
             // 
             this.label_Connection.AutoSize = true;
@@ -91,11 +94,20 @@
             this.dataGridViewFrageninkategorie.Size = new System.Drawing.Size(283, 174);
             this.dataGridViewFrageninkategorie.TabIndex = 5;
             // 
+            // dataGridViewFragensatz
+            // 
+            this.dataGridViewFragensatz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFragensatz.Location = new System.Drawing.Point(595, 202);
+            this.dataGridViewFragensatz.Name = "dataGridViewFragensatz";
+            this.dataGridViewFragensatz.Size = new System.Drawing.Size(275, 174);
+            this.dataGridViewFragensatz.TabIndex = 6;
+            // 
             // DatabaseConnect
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 476);
+            this.Controls.Add(this.dataGridViewFragensatz);
             this.Controls.Add(this.dataGridViewFrageninkategorie);
             this.Controls.Add(this.dataGridViewFragen);
             this.Controls.Add(this.dataGridViewErgebnis);
@@ -103,6 +115,7 @@
             this.Controls.Add(this.dataGridViewKategorie);
             this.Controls.Add(this.label_Connection);
             this.Name = "DatabaseConnect";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DatabaseConnect";
             this.Load += new System.EventHandler(this.DatabaseConnect_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKategorie)).EndInit();
@@ -110,6 +123,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewErgebnis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFrageninkategorie)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewFragensatz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,5 +138,6 @@
         public System.Windows.Forms.DataGridView dataGridViewErgebnis;
         public System.Windows.Forms.DataGridView dataGridViewFragen;
         public System.Windows.Forms.DataGridView dataGridViewFrageninkategorie;
+        public System.Windows.Forms.DataGridView dataGridViewFragensatz;
     }
 }

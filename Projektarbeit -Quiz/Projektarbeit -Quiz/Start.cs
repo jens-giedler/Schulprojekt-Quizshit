@@ -21,6 +21,14 @@ namespace Projektarbeit__Quiz
 
         private void startStart_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Form1.menue_01.checkedListBoxFill();
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
             Form1.menue_01.Show();
             this.Hide();
             //Form1.menue_01.kategorieCheckList.Items =

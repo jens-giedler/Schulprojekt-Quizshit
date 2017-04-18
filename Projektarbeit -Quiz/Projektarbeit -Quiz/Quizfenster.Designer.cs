@@ -120,6 +120,7 @@
             this.Controls.Add(this.highscore);
             this.Controls.Add(this.fragenNummer);
             this.Name = "Quizfenster";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quizfenster";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Quizfenster_FormClosing);
             this.Load += new System.EventHandler(this.Quizfenster_Load);
