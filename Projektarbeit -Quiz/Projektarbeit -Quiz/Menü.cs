@@ -24,10 +24,13 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Methode um die checkedListBox im Hauptmenü zu füllen. Ruft dafür eine Methode aus DatabaseConnect auf um ein Array aus Strings zu füllen.
+        //Anschließend Füllt er die Box mit den Arrayeinträgen.
         public void checkedListBoxFill()
         {
             String[] a = Form1.databaseconnect_01.getKategorienAusTabelle();
-            for (int i = 0; i < a.GetLength(1); i++)
+
+            for (int i = 0; i < 10; i++)
             {
                 this.kategorieCheckList.Items.Add(a.GetValue(i));
             }
@@ -48,6 +51,7 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Änderung der Farbe über ein colorDialog. Verändert die Farbe eines kleinen bereiches neben dem Knopf sowie von dem Quizfenster.
         private void colorDialog_Click(object sender, EventArgs e)
         {
             if (colorDialog1.ShowDialog() == DialogResult.OK)
@@ -63,16 +67,21 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Wenn dieses Fenster geschlossen wird werden alle Fenster geschlossen.
         private void Menü_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
+        //Starten des Quizes. Setzt den frageCounter auf 0 (falls dieser von einem Vergangenen Quiz noch einen Wert hatte).
+        //Führt anschließend eine Methode aus dem Quizfenster aus. Zeigt das Quizfenster an und versteckt das Menü.
         private void menueQuizStart_Click(object sender, EventArgs e)
         {
-            Form1.frageCounter = 1;
+            Form1.frageCounter = 0;
+            Form1.quizfenster_01.ladeNaechsteFrage(Form1.frageCounter);
             Form1.quizfenster_01.Show();
             this.Hide();
+            
         }
     }
 }

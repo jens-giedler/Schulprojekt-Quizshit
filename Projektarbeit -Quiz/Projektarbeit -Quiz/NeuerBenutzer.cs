@@ -17,6 +17,7 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        //Resetett das Fenster, setzt es auf Hide und macht das Hauptmenü sichtbar.
         private void neuerBenutzerZurueck_Click(object sender, EventArgs e)
         {
             Form1.start_01.Show();
@@ -26,11 +27,13 @@ namespace Projektarbeit__Quiz
             this.Hide();
         }
 
+        //Wenn dieses Fenster geschlossen wird werden alle Fenster geschlossen.
         private void NeuerBenutzer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
+        //Vergleicht, ob die eingetragenen Usernames gleich sind. Wenn ja erstellt er neue Einträge in der Benutzer Tabelle. Bei Nein gibt er eine kleine Fehlermeldung aus.
         private void neuerBenutzerFertig_Click(object sender, EventArgs e)
         {
             if (Form1.neuerbenutzer_01.textBoxName.Text == Form1.neuerbenutzer_01.nameEingeben.Text)

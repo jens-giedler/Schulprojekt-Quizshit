@@ -131,6 +131,7 @@
 
         #endregion
 
+        // DataGridViews aus Mangel einer besseren Lösung auf public gesetzt damit diese von anderen Forms direkt verändert werden können.
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label label_Connection;
         public System.Windows.Forms.DataGridView dataGridViewKategorie;

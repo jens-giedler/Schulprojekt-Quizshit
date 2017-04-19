@@ -19,6 +19,7 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        //Initialsiert das Hauptmenü
         private void startStart_Click(object sender, EventArgs e)
         {
             try
@@ -34,6 +35,7 @@ namespace Projektarbeit__Quiz
             //Form1.menue_01.kategorieCheckList.Items =
         }
 
+        //Leitet zum neuen Benutzer Feld
         private void startNeuerBenutzer_Click(object sender, EventArgs e)
         {
             Form1.neuerbenutzer_01.Show();
@@ -41,6 +43,7 @@ namespace Projektarbeit__Quiz
            
         }
 
+        //Wenn dieses Fenster geschlossen wird, wird jedes Fenster der Anwendung geschlossen
         private void Start_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

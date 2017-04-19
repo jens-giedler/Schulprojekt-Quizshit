@@ -20,6 +20,7 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        //Variablen für den Connector
         MySqlDataAdapter da1 = null;
         DataSet ds1 = null;
 
@@ -35,17 +36,20 @@ namespace Projektarbeit__Quiz
         MySqlDataAdapter da5 = null;
         DataSet ds5 = null;
 
-
+        //Beim Starten des Fensters wird die Methode ConnectDatabase ausgeführt. Dadurch wird sofort mit der Datenbank verbunden.
         private void DatabaseConnect_Load(object sender, EventArgs e)
         {
             ConnectDatabase();
         }
 
+        //Wenn dieses Fenster geschlossen wird, werden alle Fenster geschlossen
         private void DatabaseConnect_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
         }
 
+        //Verbindet das Programm mit mehreren Tabellen aus einer mysql-Datenbank.
+        //Läd sich die 5 Tabellen und schreibt diese in eine jeweilig eigene DataGridView.
         public void ConnectDatabase()
         {
             MySqlConnection conn = null;
@@ -130,19 +134,135 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Methode um alle Kategorien aus der Kategorientabelle auszulesen. Diese werden in ein Array geschrieben und dieses wird ausgegeben.
+        // Sucht zuerst die Spalte, in der die Kategorienamen stehen ("katname") und Schreibt anschließend alle Werte heraus.
         public String[] getKategorienAusTabelle()
         {
-            String[] array = new String[this.dataGridViewKategorie.Rows.Count];
+            String[] a = new String[Form1.databaseconnect_01.dataGridViewKategorie.Rows.Count];
+            int kaindex = 0;
 
-            foreach (DataGridViewRow row in dataGridViewKategorie.Rows)
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewKategorie.Columns)
             {
-                for (int i = 0; i < dataGridViewKategorie.ColumnCount; i++)
+                if (column.HeaderText == "katname")
                 {
-                    array.SetValue(row.Cells[i].Value.ToString, i);
+                    kaindex = column.Index;
+                }
+            }
+            
+
+            for (int i = 0; i < Form1.databaseconnect_01.dataGridViewKategorie.Rows.Count; i++)
+            {
+                String strTemp = Form1.databaseconnect_01.dataGridViewKategorie.Rows[i].Cells[kaindex].Value.ToString();
+                a.SetValue(strTemp, i);
+                if (i == 9) { i++; } //Ansonsten kommt ein Nullpointer Exception
+            }
+
+
+            return a;
+        }
+
+        //Methode um die Nächste Frage aus der Tabelle "FragenSatz" zu holen. Es wird eine "Frage" ausgegeben"
+        //Dafür werden die Entsprechenden Zeilen herausgesucht und in Variablen geschrieben. Mit diesen wird eine Frage Erstellt.
+        public Frage getNextQuestionAusTabelle(int nr)
+        {
+            int id = 0;
+            String txt = "";
+            String a1 = "";
+            String a2 = "";
+            String a3 = "";
+            int ra = 0;
+            //FragenID
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "frid")
+                {
+                    id = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString());
+                }
+            }
+            //FragenText
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "text")
+                {
+                    txt = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                }
+            }
+            //FragenAntwortEins
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "a1")
+                {
+                    a1 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                }
+            }
+            //FragenAntwortZwei
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "a2")
+                {
+                    a2 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                }
+            }
+            //FragenAntwortDrei
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "a3")
+                {
+                    a3 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                }
+            }
+            //FragenRichtigeAntwort
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
+            {
+                if (column.HeaderText == "ra")
+                {
+                    ra = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString());
+                }
+            }
+            Frage f = new Frage(id, txt, a1, a2, a3, ra);
+
+            return f;
+        }
+
+        //Füllt die FragensatzTabelle in Abhängigkeit zu den Kategorien die Ausgewählt wurden.
+        public void fragensatzErstellen()
+        {
+
+            int[] it = new int[Form1.menue_01.kategorieCheckList.CheckedItems.Count * 20];
+            int itcounter = 0;
+
+            int kaid = 0;
+            int frid = 0;
+
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Columns)
+            {
+                if (column.HeaderText == "katname")
+                {
+                    kaid = column.Index;
                 }
             }
 
-            return array;
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Columns)
+            {
+                if (column.HeaderText == "frid")
+                {
+                    frid = column.Index;
+                }
+            }
+
+            for (int i = 0; i < Form1.menue_01.kategorieCheckList.CheckedItems.Count; i++)
+            {
+                String ka = Form1.menue_01.kategorieCheckList.CheckedItems[i].ToString();
+               
+                foreach (DataGridViewRow row in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Rows)
+                {
+                    if (row.Cells[kaid].Value.ToString() == ka)
+                    {
+                        it.SetValue(Convert.ToInt32(row.Cells[frid].Value.ToString()), itcounter);
+                        itcounter = itcounter++;
+                    }
+                }
+            }
         }
 
     }

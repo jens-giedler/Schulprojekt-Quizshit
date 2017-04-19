@@ -27,6 +27,7 @@ namespace Projektarbeit__Quiz
             Application.Exit();
         }
 
+        //Holt sich entweder die Nächste Frage, oder wenn bereits die die Maximale Anzahl an Fragen gekommen ist, geht zum Hauptmenü über.
         private void naechsteFrage_Click(object sender, EventArgs e)
         {
             Form1.frageCounter = Form1.frageCounter + 1;
@@ -37,18 +38,20 @@ namespace Projektarbeit__Quiz
             }
             else
             {
-                //ladeNaechsteFrage();
+                ladeNaechsteFrage(Form1.frageCounter);
             }
         }
 
-        public void ladeNaechsteFrage()
+        //Methode um den Inhalt der Nächsten Frage auf alle Labels des Quizfensters anzuzeigen. Dafür Läd er sich über eine Methode des Databaseconnects eine Frage.
+        public void ladeNaechsteFrage(int nr)
         {
-            
-            //Form1.quizfenster_01.frageText = Form1.databaseconnect_01.dataGridViewFragensatz.Row;
-            //Form1.quizfenster_01.fragenNummer = Form1.frageCounter;
-            //Form1.quizfenster_01.antwort1 = Form1.databaseconnect_01.dataGridViewFragensatz.;
-            //Form1.quizfenster_01.antwort2 = Form1.databaseconnect_01.dataGridViewFragensatz.;
-            //Form1.quizfenster_01.antwort3 = Form1.databaseconnect_01.dataGridViewFragensatz.;
+
+            Frage f = Form1.databaseconnect_01.getNextQuestionAusTabelle(nr);
+            Form1.quizfenster_01.frageText.Text = f.getText();
+            Form1.quizfenster_01.fragenNummer.Text = Convert.ToString(nr);
+            Form1.quizfenster_01.antwort1.Text = f.getAntwortEins();
+            Form1.quizfenster_01.antwort2.Text = f.getAntwortZwei();
+            Form1.quizfenster_01.antwort3.Text = f.getAntwortDrei();
         }
 
     }

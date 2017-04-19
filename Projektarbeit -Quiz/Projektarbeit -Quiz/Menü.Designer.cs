@@ -163,7 +163,8 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckedListBox kategorieCheckList;
+        //Public gesetzte CheckedListBox damit diese von anderen Forms bearbeitet werden kann
+        public System.Windows.Forms.CheckedListBox kategorieCheckList;
         private System.Windows.Forms.Label kategorien;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label name;

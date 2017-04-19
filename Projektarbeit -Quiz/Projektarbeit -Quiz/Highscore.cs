@@ -19,6 +19,7 @@ namespace Projektarbeit__Quiz
 
         public static Form highscore_1 = new Form();
 
+        //Versteckt dieses Fenster, Zeigt das Hauptmenü.
         private void highscoreZurueck_Click(object sender, EventArgs e)
         {
             Form1.menue_01.Show();
@@ -30,6 +31,7 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Wenn dieses Fenster geschlossen wird, werden alle Fenster geschlossen.
         private void Highscore_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();

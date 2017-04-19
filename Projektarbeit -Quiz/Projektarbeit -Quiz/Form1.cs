@@ -19,7 +19,7 @@ namespace Projektarbeit__Quiz
         {
             InitializeComponent();
         }
-
+        //Erstellt instanzen von jeder Form auf die gegenseitig Über Form1.formname_01 zugegriffen werden kann
         public static Start start_01 = new Start();
         public static Menü menue_01 = new Menü();
         public static Highscore highscore_01 = new Highscore();
@@ -27,9 +27,10 @@ namespace Projektarbeit__Quiz
         public static Quizfenster quizfenster_01 = new Quizfenster();
         public static DatabaseConnect databaseconnect_01 = new DatabaseConnect();
 
+        //Counter um mitzuzählen, wie viele Fragen in dem aktuellen Lauf gestellt wurden
         public static int frageCounter = 0;
 
-
+        //Tickt kurz nach der initialisierung, Setzt die Sichtbarkeit der Form instanzen
         private void timer1_Tick(object sender, EventArgs e)
         {
             start_01.Show();
@@ -53,6 +54,8 @@ namespace Projektarbeit__Quiz
         }
     }
 
+
+    //Klasse Benutzer, wird verwendet um einen Benutzer aus der Tabelle zu laden und diesen weiter zu verwenden
     public class Benutzer
     {
 
@@ -80,6 +83,8 @@ namespace Projektarbeit__Quiz
 
     }
 
+
+    //Klasse Frage, wird verwendet um Fragen aus der Tabelle zu laden
     public class Frage
     {
         public Frage(int id, String txt, String aeins, String azwei, String adrei, int ra)
@@ -108,6 +113,8 @@ namespace Projektarbeit__Quiz
 
     }
 
+
+    //Klasse Kategorie
     public class Kategorie
     {
         public Kategorie(String name)
