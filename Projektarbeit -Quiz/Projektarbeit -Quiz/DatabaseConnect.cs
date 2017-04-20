@@ -190,15 +190,15 @@ namespace Projektarbeit__Quiz
             {
                 if (column.HeaderText == "FrID")
                 {
-                    id = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString());
+                    id = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString());
                 }
-            }           
+            }
             //FragenText
             foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragensatz.Columns)
             {
                 if (column.HeaderText == "FragenText")
                 {
-                    txt = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                    txt = Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString();
                 }
             }            
             //FragenAntwortEins
@@ -206,7 +206,7 @@ namespace Projektarbeit__Quiz
             {
                 if (column.HeaderText == "Antwort1Text")
                 {
-                    a1 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                    a1 = Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString();
                 }
             }           
             //FragenAntwortZwei
@@ -214,7 +214,7 @@ namespace Projektarbeit__Quiz
             {
                 if (column.HeaderText == "Antwort2Text")
                 {
-                    a2 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                    a2 = Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString();
                 }
             }          
             //FragenAntwortDrei
@@ -222,7 +222,7 @@ namespace Projektarbeit__Quiz
             {
                 if (column.HeaderText == "Antwort3Text")
                 {
-                    a3 = Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString();
+                    a3 = Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString();
                 }
             }
             //FragenRichtigeAntwort
@@ -230,7 +230,7 @@ namespace Projektarbeit__Quiz
             {
                 if (column.HeaderText == "RichtigeAntwort")
                 {
-                    ra = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz.Rows[nr].Cells[column.Index].Value.ToString());
+                    ra = Convert.ToInt32(Form1.databaseconnect_01.dataGridViewFragensatz[nr, column.Index].Value.ToString());
                 }
             }
 
@@ -297,6 +297,8 @@ namespace Projektarbeit__Quiz
             }
 
 
+            int id = 0;
+
             //Für jedes Element in dem Array "it"
             for (int i = 0; i < it.GetLength(0); i++ )
             {
@@ -307,23 +309,28 @@ namespace Projektarbeit__Quiz
                     {
                         if (row.Cells[frid2].Value.ToString() == it.GetValue(i).ToString())
                         {
-                            String fid = "a";
+                            String fid = "1";
                             String ftxt = "b";
                             String fa1 = "c";
                             String fa2 = "d";
                             String fa3 = "e";
-                            String fra = "f";
+                            String fra = "6";
                           
-                            fid = row.Cells[0].ToString();
-                            ftxt = row.Cells[1].ToString();
-                            fa1 = row.Cells[2].ToString();
-                            fa2 = row.Cells[3].ToString();
-                            fa3 = row.Cells[4].ToString();
-                            fra = row.Cells[5].ToString();
+                            //fid = row.Cells[0].ToString();
+                            //ftxt = row.Cells[1].ToString();
+                            //fa1 = row.Cells[2].ToString();
+                            //fa2 = row.Cells[3].ToString();
+                            //fa3 = row.Cells[4].ToString();
+                            //fra = row.Cells[5].ToString();
 
                             string[] row0 = {fid, ftxt, fa1, fa2, fa3, fra};
 
+
                             Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Add(row0);
+                            //Form1.databaseconnect_01.dataGridViewFragensatz.Rows[id].;
+
+                            id = id + 1;
+                            
                         }
                     }
                 }
