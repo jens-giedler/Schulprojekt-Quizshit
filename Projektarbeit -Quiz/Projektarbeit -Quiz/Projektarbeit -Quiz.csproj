@@ -86,6 +86,12 @@
     <Compile Include="Menü.Designer.cs">
       <DependentUpon>Menü.cs</DependentUpon>
     </Compile>
+    <Compile Include="Popup2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Popup2.Designer.cs">
+      <DependentUpon>Popup2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Quizfenster.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NeuerBenutzer.resx">
       <DependentUpon>NeuerBenutzer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Popup2.resx">
+      <DependentUpon>Popup2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Quizfenster.resx">
       <DependentUpon>Quizfenster.cs</DependentUpon>

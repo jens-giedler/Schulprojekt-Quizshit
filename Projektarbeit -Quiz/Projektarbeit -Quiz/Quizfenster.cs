@@ -95,7 +95,7 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
                     return false;
                 }
             }
@@ -107,7 +107,7 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
                     return false;
                 }
             }
@@ -119,7 +119,7 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
                     return false;
                 }
             }

@@ -32,7 +32,6 @@ namespace Projektarbeit__Quiz
             }
             Form1.menue_01.Show();
             this.Hide();
-            //Form1.menue_01.kategorieCheckList.Items =
         }
 
         //Leitet zum neuen Benutzer Feld

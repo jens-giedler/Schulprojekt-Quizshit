@@ -30,7 +30,7 @@ namespace Projektarbeit__Quiz
         {
             String[] a = Form1.databaseconnect_01.getKategorienAusTabelle();
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < Form1.databaseconnect_01.dataGridViewKategorie.Rows.Count - 1; i++)
             {
                 this.kategorieCheckList.Items.Add(a.GetValue(i));
             }
@@ -78,6 +78,7 @@ namespace Projektarbeit__Quiz
         private void menueQuizStart_Click(object sender, EventArgs e)
         {
             Form1.frageCounter = 0;
+            Form1.databaseconnect_01.fragensatzErstellen();
             Form1.quizfenster_01.ladeNaechsteFrage(Form1.frageCounter);
             Form1.quizfenster_01.Show();
             this.Hide();

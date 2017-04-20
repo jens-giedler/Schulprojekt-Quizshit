@@ -37,6 +37,12 @@
             this.dataGridViewFragen = new System.Windows.Forms.DataGridView();
             this.dataGridViewFrageninkategorie = new System.Windows.Forms.DataGridView();
             this.dataGridViewFragensatz = new System.Windows.Forms.DataGridView();
+            this.FrID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FragenText = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Antwort1Text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Antwort2Text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Antwort3Text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.RichtigeAntwort = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewKategorie)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBenutzer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewErgebnis)).BeginInit();
@@ -97,10 +103,47 @@
             // dataGridViewFragensatz
             // 
             this.dataGridViewFragensatz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewFragensatz.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.FrID,
+            this.FragenText,
+            this.Antwort1Text,
+            this.Antwort2Text,
+            this.Antwort3Text,
+            this.RichtigeAntwort});
             this.dataGridViewFragensatz.Location = new System.Drawing.Point(595, 202);
             this.dataGridViewFragensatz.Name = "dataGridViewFragensatz";
             this.dataGridViewFragensatz.Size = new System.Drawing.Size(275, 174);
             this.dataGridViewFragensatz.TabIndex = 6;
+            // 
+            // FrID
+            // 
+            this.FrID.HeaderText = "FrID";
+            this.FrID.Name = "FrID";
+            // 
+            // FragenText
+            // 
+            this.FragenText.HeaderText = "FragenText";
+            this.FragenText.Name = "FragenText";
+            // 
+            // Antwort1Text
+            // 
+            this.Antwort1Text.HeaderText = "Antwort1Text";
+            this.Antwort1Text.Name = "Antwort1Text";
+            // 
+            // Antwort2Text
+            // 
+            this.Antwort2Text.HeaderText = "Antwort2Text";
+            this.Antwort2Text.Name = "Antwort2Text";
+            // 
+            // Antwort3Text
+            // 
+            this.Antwort3Text.HeaderText = "Antwort3Text";
+            this.Antwort3Text.Name = "Antwort3Text";
+            // 
+            // RichtigeAntwort
+            // 
+            this.RichtigeAntwort.HeaderText = "RichtigeAntwort";
+            this.RichtigeAntwort.Name = "RichtigeAntwort";
             // 
             // DatabaseConnect
             // 
@@ -140,5 +183,11 @@
         public System.Windows.Forms.DataGridView dataGridViewFragen;
         public System.Windows.Forms.DataGridView dataGridViewFrageninkategorie;
         public System.Windows.Forms.DataGridView dataGridViewFragensatz;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FrID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FragenText;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Antwort1Text;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Antwort2Text;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Antwort3Text;
+        private System.Windows.Forms.DataGridViewTextBoxColumn RichtigeAntwort;
     }
 }
