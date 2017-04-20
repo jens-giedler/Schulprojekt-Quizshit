@@ -17,6 +17,8 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        Frage aktuelleFrage = new Frage(0, "", "", "", "", 0);
+
         private void Quizfenster_Load(object sender, EventArgs e)
         {
 
@@ -31,28 +33,102 @@ namespace Projektarbeit__Quiz
         private void naechsteFrage_Click(object sender, EventArgs e)
         {
             Form1.frageCounter = Form1.frageCounter + 1;
-            if (Form1.frageCounter == Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count)
+            if (frageÜberprüfen() == true)
             {
-                Form1.menue_01.Show();
-                this.Hide();
+                if (Form1.frageCounter == Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count)
+                {
+                    Form1.menue_01.Show();
+                    this.Hide();
+                    //Leert den Fragensatz.
+                    int temp = Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count;
+                    temp = temp - 1;
+                    while (Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 0)
+                    {
+                        Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(temp);
+                    }
+                }
+                else
+                {
+                    ladeNaechsteFrage(Form1.frageCounter);
+                }
             }
             else
             {
-                ladeNaechsteFrage(Form1.frageCounter);
+                Form1.menue_01.Show();
+                this.Hide();
+                //Leert den Fragensatz.
+                int temp = Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count;
+                temp = temp - 1;
+                while (Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 0)
+                {
+                    Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(temp);
+                }
             }
         }
 
         //Methode um den Inhalt der Nächsten Frage auf alle Labels des Quizfensters anzuzeigen. Dafür Läd er sich über eine Methode des Databaseconnects eine Frage.
+        //Außerdem werden die Checkboxen zurückgesetzt.
         public void ladeNaechsteFrage(int nr)
         {
-
             Frage f = Form1.databaseconnect_01.getNextQuestionAusTabelle(nr);
             Form1.quizfenster_01.frageText.Text = f.getText();
             Form1.quizfenster_01.fragenNummer.Text = Convert.ToString(nr);
             Form1.quizfenster_01.antwort1.Text = f.getAntwortEins();
             Form1.quizfenster_01.antwort2.Text = f.getAntwortZwei();
             Form1.quizfenster_01.antwort3.Text = f.getAntwortDrei();
+            Form1.quizfenster_01.antwort1.Checked = false;
+            Form1.quizfenster_01.antwort2.Checked = false;
+            Form1.quizfenster_01.antwort3.Checked = false;
+            Form1.quizfenster_01.aktuelleFrage = f;
         }
+
+        //Überprüft ob von der Aktuellen Frage die Richtige Lösung ausgewählt wurde.
+        //Wenn das der Fall ist, läuft gibt die Methode ein "true" zurück. Wenn das nicht der fall ist Öffnet die Methode eine "Verloren"-Meldung
+        //und gibt ein false zurück
+        public bool frageÜberprüfen()
+        {
+            if (aktuelleFrage.getRichtigeAntwort() == 1)
+            {
+                if (Form1.quizfenster_01.antwort1.Checked == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    return false;
+                }
+            }
+            else if (aktuelleFrage.getRichtigeAntwort() == 2)
+            {
+                if (Form1.quizfenster_01.antwort2.Checked == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    return false;
+                }
+            }
+            else if (aktuelleFrage.getRichtigeAntwort() == 3)
+            {
+                if (Form1.quizfenster_01.antwort3.Checked == true)
+                {
+                    return true;
+                }
+                else
+                {
+                    Popup p = new Popup("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
 
     }
 }

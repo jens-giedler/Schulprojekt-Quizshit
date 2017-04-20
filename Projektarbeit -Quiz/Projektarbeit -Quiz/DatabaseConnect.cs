@@ -36,6 +36,9 @@ namespace Projektarbeit__Quiz
         MySqlDataAdapter da5 = null;
         DataSet ds5 = null;
 
+        MySqlDataAdapter da6 = null;
+        DataSet ds6 = null;
+
         //Beim Starten des Fensters wird die Methode ConnectDatabase ausgeführt. Dadurch wird sofort mit der Datenbank verbunden.
         private void DatabaseConnect_Load(object sender, EventArgs e)
         {
@@ -120,6 +123,18 @@ namespace Projektarbeit__Quiz
                 da5.DeleteCommand = cb5.GetDeleteCommand();
                 da5.InsertCommand = cb5.GetInsertCommand();
                 cb5.ConflictOption = ConflictOption.CompareAllSearchableValues;
+                //fragensatz (leere Tabelle mit den Selben Spalten wie fragen)
+                string sql6 = "SELECT * FROM frageninkategorie";
+                MySqlCommand cmd6 = new MySqlCommand(sql6, conn);
+                da6 = new MySqlDataAdapter(cmd6);
+                ds6 = new DataSet();
+                da6.Fill(ds6, "tErgebnismenge");
+                dataGridViewFrageninkategorie.DataSource = ds6.Tables["tErgebnismenge"];
+                MySqlCommandBuilder cb6 = new MySqlCommandBuilder(da6);
+                da6.UpdateCommand = cb6.GetUpdateCommand();
+                da6.DeleteCommand = cb6.GetDeleteCommand();
+                da6.InsertCommand = cb6.GetInsertCommand();
+                cb6.ConflictOption = ConflictOption.CompareAllSearchableValues;
             }
             catch (Exception e)
             {
@@ -233,7 +248,9 @@ namespace Projektarbeit__Quiz
 
             int kaid = 0;
             int frid = 0;
+            int frid2 = 0;
 
+            //Spalte katname suchen
             foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Columns)
             {
                 if (column.HeaderText == "katname")
@@ -242,6 +259,7 @@ namespace Projektarbeit__Quiz
                 }
             }
 
+            //Spalte frid suchen
             foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Columns)
             {
                 if (column.HeaderText == "frid")
@@ -250,16 +268,43 @@ namespace Projektarbeit__Quiz
                 }
             }
 
+            //Für Jedes Element in der checkedList (jede Kategorie)
             for (int i = 0; i < Form1.menue_01.kategorieCheckList.CheckedItems.Count; i++)
             {
                 String ka = Form1.menue_01.kategorieCheckList.CheckedItems[i].ToString();
-               
+                
+                //Reihen durchgehen und für jedes vorkommen der Aktuellen Kategorie die fragen ID in ein array schreiben
                 foreach (DataGridViewRow row in Form1.databaseconnect_01.dataGridViewFrageninkategorie.Rows)
                 {
                     if (row.Cells[kaid].Value.ToString() == ka)
                     {
                         it.SetValue(Convert.ToInt32(row.Cells[frid].Value.ToString()), itcounter);
                         itcounter = itcounter++;
+                    }
+                }
+            }
+
+            //Spalte frid in Fragen suchen
+            foreach (DataGridViewColumn column in Form1.databaseconnect_01.dataGridViewFragen.Columns)
+            {
+                if (column.HeaderText == "frid")
+                {
+                    frid2 = column.Index;
+                }
+            }
+
+
+            //Für jedes Element in dem Array "it"
+            for (int i = 0; i < it.GetLength(1); i++ )
+            {
+                //Holt sich die Fragen aus der Fragenliste anhand der ID, schreibt diese Fragen in die Fragensatz tabelle
+                foreach (DataGridViewRow row in Form1.databaseconnect_01.dataGridViewFragen.Rows)
+                {
+                    //Überprüft ob die frid übereinstimmt
+                    if (row.Cells[frid2].Value.ToString() == it.GetValue(i).ToString())
+                    {
+                        DataGridViewRow row2 = (DataGridViewRow)row.Clone();
+                        Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Add(row2);
                     }
                 }
             }
