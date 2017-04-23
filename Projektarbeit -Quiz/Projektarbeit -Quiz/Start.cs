@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Projektarbeit__Quiz
 {
+    //Fenster für die Benutzerwahl(nicht Implementiert) und den Übergang in das Hauptmenü
     public partial class Start : Form
     {
-
 
         public Start()
         {

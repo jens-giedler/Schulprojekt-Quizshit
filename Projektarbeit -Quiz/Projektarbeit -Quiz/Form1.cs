@@ -12,6 +12,8 @@ using MySql.Data.MySqlClient;
 
 namespace Projektarbeit__Quiz
 {
+    //Grundfenster, wird als einziges beim Starten der Anwendung ausgeführt.
+    //Hier werden Instanzen von allen anderen Fenstern Aufgerufen und wird als Schnitstelle verwendet.
     public partial class Form1 : Form
     {
 
@@ -30,6 +32,15 @@ namespace Projektarbeit__Quiz
         //Counter um mitzuzählen, wie viele Fragen in dem aktuellen Lauf gestellt wurden
         public static int frageCounter = 0;
 
+        //Liste der bereits verwendeten Fragen
+        public static String[] rngListe = new String[20];
+
+        //Bool für das erzeugen von Zufälligen Fragen
+        public static bool selbeFrage = false;
+
+        //Int für die Wahl der Frage
+        public static int globalInt = 0;
+
         //Tickt kurz nach der initialisierung, Setzt die Sichtbarkeit der Form instanzen
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -40,7 +51,8 @@ namespace Projektarbeit__Quiz
             neuerbenutzer_01.Hide();
             quizfenster_01.Hide();
             databaseconnect_01.Show();
-            timer1.Enabled = false;
+            databaseconnect_01.Hide();   //Zum Anzeigen der Tabellen diese Zeile Auskommentieren
+            timer1.Enabled = false;            
         }
 
         private void Form1_Load(object sender, EventArgs e)

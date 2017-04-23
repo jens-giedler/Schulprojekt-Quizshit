@@ -34,11 +34,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(118, 75);
+            this.label1.Location = new System.Drawing.Point(75, 76);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Popup2
             // 
@@ -47,7 +48,7 @@
             this.ClientSize = new System.Drawing.Size(302, 167);
             this.Controls.Add(this.label1);
             this.Name = "Popup2";
-            this.Text = "Popup2";
+            this.Text = "Popup";
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -49,7 +49,6 @@
             this.kategorieCheckList.Name = "kategorieCheckList";
             this.kategorieCheckList.Size = new System.Drawing.Size(352, 274);
             this.kategorieCheckList.TabIndex = 1;
-            this.kategorieCheckList.SelectedIndexChanged += new System.EventHandler(this.checkedListBox1_SelectedIndexChanged);
             // 
             // kategorien
             // 
@@ -59,7 +58,6 @@
             this.kategorien.Size = new System.Drawing.Size(58, 13);
             this.kategorien.TabIndex = 2;
             this.kategorien.Text = "Kategorien";
-            this.kategorien.Click += new System.EventHandler(this.label1_Click);
             // 
             // textBox1
             // 
@@ -95,7 +93,6 @@
             this.ton.TabIndex = 8;
             this.ton.Text = "Ton";
             this.ton.UseVisualStyleBackColor = true;
-            this.ton.CheckedChanged += new System.EventHandler(this.ton_CheckedChanged);
             // 
             // colorDialog
             // 
@@ -124,7 +121,6 @@
             this.farbFeld.Size = new System.Drawing.Size(16, 13);
             this.farbFeld.TabIndex = 11;
             this.farbFeld.Text = "   ";
-            this.farbFeld.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // menueQuizStart
             // 

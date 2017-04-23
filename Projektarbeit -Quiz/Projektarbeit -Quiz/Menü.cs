@@ -10,14 +10,15 @@ using System.Windows.Forms;
 
 namespace Projektarbeit__Quiz
 {
+    //Hauptmenü des Spiels. Von Hier kann man das Quiz Starten.
+    //Man kann im aktuellen Format Hier auswählen, aus welchen Kategorien Fragen geladen werden sowie welche Hintergrundsfarbe das Quizfenster hat.
+    //Geplante Features: Musikwahl, an & ausschalten des Tons, Wechseln des Benutzernamens, Highscoreliste.
     public partial class Menü : Form
     {
         public Menü()
         {
             InitializeComponent();
         }
-
-        public static Form menue_1 = new Form();
         
         private void Menü_Load(object sender, EventArgs e)
         {
@@ -36,20 +37,6 @@ namespace Projektarbeit__Quiz
             }
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ton_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
 
         //Änderung der Farbe über ein colorDialog. Verändert die Farbe eines kleinen bereiches neben dem Knopf sowie von dem Quizfenster.
         private void colorDialog_Click(object sender, EventArgs e)
@@ -62,10 +49,6 @@ namespace Projektarbeit__Quiz
             }
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
-        {
-
-        }
 
         //Wenn dieses Fenster geschlossen wird werden alle Fenster geschlossen.
         private void Menü_FormClosing(object sender, FormClosingEventArgs e)
@@ -73,15 +56,33 @@ namespace Projektarbeit__Quiz
             Application.Exit();
         }
 
+
         //Starten des Quizes. Setzt den frageCounter auf 0 (falls dieser von einem Vergangenen Quiz noch einen Wert hatte).
         //Führt anschließend eine Methode aus dem Quizfenster aus. Zeigt das Quizfenster an und versteckt das Menü.
+        //Falls keine Kategorie ausgewählt ist kommt nur eine Meldung, das eine Ausgewählt werden soll.
         private void menueQuizStart_Click(object sender, EventArgs e)
         {
-            Form1.frageCounter = 0;
-            Form1.databaseconnect_01.fragensatzErstellen();
-            Form1.quizfenster_01.ladeNaechsteFrage(Form1.frageCounter);
-            Form1.quizfenster_01.Show();
-            this.Hide();
+            if (Form1.menue_01.kategorieCheckList.CheckedItems.Count > 0)
+            {
+                Form1.frageCounter = 0;
+                Form1.databaseconnect_01.fragensatzErstellen();
+                while (Form1.selbeFrage == false)
+                {
+                    Form1.quizfenster_01.RNGFrage(Form1.frageCounter);
+                }
+                Form1.quizfenster_01.ladeNaechsteFrage(Form1.globalInt);
+                for (int j = 0; j < Form1.rngListe.Length; j++)
+                {
+                    Form1.rngListe.SetValue("", j);
+                }
+                Form1.quizfenster_01.Show();
+                this.Hide();
+            }
+            else
+            {
+                Popup2 Kategoriewahl = new Popup2("Bitte Kategorie Auswählen");
+                Kategoriewahl.Show();
+            }
             
         }
     }

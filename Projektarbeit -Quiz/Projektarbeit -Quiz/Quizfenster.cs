@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Projektarbeit__Quiz
 {
+    //Fenster in der das Quiz schließlich Läuft.
+    //Beinhaltet mehrere Methoden zum Verwalten der Fragen
     public partial class Quizfenster : Form
     {
         public Quizfenster()
@@ -17,6 +19,7 @@ namespace Projektarbeit__Quiz
             InitializeComponent();
         }
 
+        //Variable in der die Werte für die aktuelle Frage gespeichert werden
         Frage aktuelleFrage = new Frage(0, "", "", "", "", 0);
 
         private void Quizfenster_Load(object sender, EventArgs e)
@@ -24,6 +27,7 @@ namespace Projektarbeit__Quiz
 
         }
 
+        //Wenn dieses Fenster geschlossen wird schließen sich alle Fenster
         private void Quizfenster_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -33,23 +37,30 @@ namespace Projektarbeit__Quiz
         private void naechsteFrage_Click(object sender, EventArgs e)
         {
             Form1.frageCounter = Form1.frageCounter + 1;
+            Form1.selbeFrage = false;
             if (frageÜberprüfen() == true)
             {
-                if (Form1.frageCounter == Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count)
+                if (Form1.frageCounter == 20)
                 {
                     Form1.menue_01.Show();
                     this.Hide();
                     //Leert den Fragensatz.
                     int temp = Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count;
-                    temp = temp - 1;
-                    while (Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 0)
+                    temp = temp - 2;
+                    Form1.frageCounter = 0;
+                    for (int j = temp; Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 1; j--)
                     {
-                        Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(temp);
+                        Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(j);
                     }
+                    Popup2 Sieg = new Popup2("Erfolgreich 20 Zufällige Fragen aus den Kategorien beantwortet!");
                 }
                 else
                 {
-                    ladeNaechsteFrage(Form1.frageCounter);
+                    while (Form1.selbeFrage == false)
+                    {
+                        RNGFrage(Form1.frageCounter);
+                    }
+                    ladeNaechsteFrage(Form1.globalInt);
                 }
             }
             else
@@ -58,10 +69,11 @@ namespace Projektarbeit__Quiz
                 this.Hide();
                 //Leert den Fragensatz.
                 int temp = Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count;
-                temp = temp - 1;
-                while (Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 0)
+                temp = temp - 2;
+                Form1.frageCounter = 0;
+                for (int j = temp; Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count > 1; j--)
                 {
-                    Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(temp);
+                    Form1.databaseconnect_01.dataGridViewFragensatz.Rows.RemoveAt(j);
                 }
             }
         }
@@ -72,7 +84,7 @@ namespace Projektarbeit__Quiz
         {
             Frage f = Form1.databaseconnect_01.getNextQuestionAusTabelle(nr);
             Form1.quizfenster_01.frageText.Text = f.getText();
-            Form1.quizfenster_01.fragenNummer.Text = Convert.ToString(nr);
+            Form1.quizfenster_01.fragenNummer.Text = Convert.ToString(Form1.frageCounter);
             Form1.quizfenster_01.antwort1.Text = f.getAntwortEins();
             Form1.quizfenster_01.antwort2.Text = f.getAntwortZwei();
             Form1.quizfenster_01.antwort3.Text = f.getAntwortDrei();
@@ -95,7 +107,8 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren bei Frage " + Form1.frageCounter + " !");
+                    p.Show();
                     return false;
                 }
             }
@@ -107,7 +120,8 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren bei Frage " + Form1.frageCounter + " !");
+                    p.Show();
                     return false;
                 }
             }
@@ -119,7 +133,8 @@ namespace Projektarbeit__Quiz
                 }
                 else
                 {
-                    Popup2 p = new Popup2("Verloren nach " + Form1.frageCounter + " Fragen!");
+                    Popup2 p = new Popup2("Verloren bei Frage " + Form1.frageCounter + " !");
+                    p.Show();
                     return false;
                 }
             }
@@ -128,7 +143,31 @@ namespace Projektarbeit__Quiz
                 return false;
             }
         }
-        
 
+
+        //Wählt eine zufällige Frage aus dem Fragensatz. Überprüft anschließend ob die Frage bereits vorgekommen ist.
+        public void RNGFrage(int i)
+        {
+            int rng = 0;
+            int Wiederholungcounter = 0;
+            Random rnd1 = new Random();
+            rng = rnd1.Next(Form1.databaseconnect_01.dataGridViewFragensatz.Rows.Count - 1);
+
+            foreach (String s in Form1.rngListe)
+            {
+                if (Form1.databaseconnect_01.dataGridViewFragensatz[0, rng].Value.ToString() == s)
+                {
+                    Wiederholungcounter = Wiederholungcounter + 1;
+                }
+
+            }
+            if (Wiederholungcounter == 0)
+            {
+                Form1.rngListe.SetValue(Form1.databaseconnect_01.dataGridViewFragensatz[0, i].ToString(), i);
+                Form1.selbeFrage = true;
+                Form1.globalInt = rng;
+            }
+
+        }
     }
 }

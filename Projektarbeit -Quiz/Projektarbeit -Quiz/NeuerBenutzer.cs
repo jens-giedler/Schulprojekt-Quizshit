@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Projektarbeit__Quiz
 {
+    //Fenster zum erstellen eines neuen Benutzers
+    //Nicht verwendetes Feature.
     public partial class NeuerBenutzer : Form
     {
         public NeuerBenutzer()

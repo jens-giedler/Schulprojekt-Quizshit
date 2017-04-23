@@ -10,6 +10,8 @@ using System.Windows.Forms;
 
 namespace Projektarbeit__Quiz
 {
+    //Fenster in dem die Highscoreliste geladen wird.
+    //Wird aktuell nicht verwendet.
     public partial class Highscore : Form
     {
         public Highscore()
@@ -36,5 +38,31 @@ namespace Projektarbeit__Quiz
         {
             Application.Exit();
         }
+
+        public void setHighscoreLabel1(String s)
+        {
+            this.highscore1.Text = s;
+        }
+
+        public void setHighscoreLabel2(String s)
+        {
+            this.highscore2.Text = s;
+        }
+
+        public void setHighscoreLabel3(String s)
+        {
+            this.highscore3.Text = s;
+        }
+
+        public void setHighscoreLabel4(String s)
+        {
+            this.highscore4.Text = s;
+        }
+
+        public void setHighscoreLabel5(String s)
+        {
+            this.highscore5.Text = s;
+        }
+
     }
 }
